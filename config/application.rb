@@ -31,5 +31,14 @@ module Api
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.log_level = ENV['LOG_LEVEL']
+
+    # Log to STDOUT because Docker expects it
+    $stdout.sync = true
+    logger = ActiveSupport::Logger.new(STDOUT)
+    logger.fomatter = config.log_formatter
+    config.log_tags = [:subdomain, :uuid]
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 end
