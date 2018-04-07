@@ -1,0 +1,20 @@
+# Git metadata
+.git
+.gitignore
+
+# Docker configuration files
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Rails stuff
+log/
+tmp/
+vendor/bundle/
+
+# Documentation
+README.md
+LICENSE
+
+# Environment variables
+.env
