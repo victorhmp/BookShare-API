@@ -1,23 +1,74 @@
-# Use official Ruby's default image as a base
-FROM ruby:2.5
+################################################################################
+#                                  BASE IMAGE                                  #
+################################################################################
 
-# Create an environment variable for our default build path
-ENV BUILD_PATH /usr/src/api
+# Use official Ruby's alpine image as base
+FROM ruby:2.5-alpine AS base
 
-# Create BUILD_PATH if it does not exist
-RUN mkdir -p $BUILD_PATH
+# Create API_PATH if it doesn't exist and set it as the working dir
+ENV API_PATH=/usr/src/api
+WORKDIR $API_PATH
 
-# Set BUILD_PATH as the main directory
-WORKDIR $BUILD_PATH
+# Define base environment variables for the system
+ENV BUNDLE_PATH="vendor/bundle" \
+    PATH="$API_PATH/bin:$PATH"
 
-# Copy Gemfile and Gemfile.lock to WORKDIR
+# Define base environment variables for the API
+ENV HOST=0.0.0.0 \
+    PORT=3000
+
+# Expose default port to connect with the service
+EXPOSE $PORT
+
+###############################################################################
+#                               DEVELOPMENT IMAGE                              #
+################################################################################
+
+# Use base image to create the development image
+FROM base AS development
+
+# Set development environment variables
+ENV RAILS_ENV=development
+
+# Update and install packages
+RUN apk add --update \
+      build-base \
+      postgresql-dev \
+      tzdata \
+    && rm -rf /var/cache/apk/*
+
+# Copy Gemfile and Gemfile.lock and install dependencies
 COPY Gemfile Gemfile.lock ./
-
-# Install dependencies specified by Gemfile and Gemfile.lock
 RUN bundle install
 
-# Copy the remaining code from host's current dir to WORKDIR
+# Copy the application code to the installation path
 COPY . .
 
-# Command appended to all other commands
-ENTRYPOINT [ "bundle", "exec" ]
+# Define default command to execute when running the container
+CMD [ "rails", "server" ]
+
+################################################################################
+#                               PRODUCTION IMAGE                               #
+################################################################################
+
+# Use base image to create the production image
+FROM base AS production
+
+# Set production environment variables
+ENV RAILS_ENV=production
+
+# Update and install packages
+RUN apk add --update \
+      libressl-dev \
+      postgresql-libs \
+      tzdata \
+    && rm -rf /var/cache/apk/*
+
+# Copy code from the development container
+COPY --from=development $API_PATH/./ ./
+
+# Remove development dependencies
+RUN bundle install --clean --frozen --without development test
+
+# Define default command to execute when running the container
+CMD [ "rails", "server" ]
