@@ -37,7 +37,7 @@ module Api
     # Log to STDOUT because Docker expects it
     $stdout.sync = true
     logger = ActiveSupport::Logger.new(STDOUT)
-    logger.fomatter = config.log_formatter
+    logger.formatter = config.log_formatter
     config.log_tags = [:subdomain, :uuid]
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
