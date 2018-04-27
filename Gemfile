@@ -18,6 +18,8 @@ gem 'puma', '~> 3.11'
 
 gem 'devise'
 
+gem 'rack-cors', require: 'rack/cors'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
