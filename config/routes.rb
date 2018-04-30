@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :items
       resources :lists
-      devise_for :users
     end
   end
+  devise_for :users, defaults: { format: :json }
 end
