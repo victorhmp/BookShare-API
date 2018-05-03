@@ -5,5 +5,9 @@ Rails.application.routes.draw do
       resources :lists
     end
   end
-  devise_for :users, defaults: { format: :json }
+  post '/login' => "sessions#create"
+  delete '/logout' => "sessions#destroy"
+  resources :users
+  get 'profile' => "users#profile"
+  # devise_for :users, defaults: { format: :json }
 end
