@@ -11,6 +11,7 @@ docker-compose.yml
 log/
 tmp/
 vendor/bundle/
+pids/
 
 # Documentation
 README.md
