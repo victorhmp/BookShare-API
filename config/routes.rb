@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   delete '/logout' => "sessions#destroy"
   resources :users
   get 'profile' => "users#profile"
+  resources :wishlists
   # devise_for :users, defaults: { format: :json }
 end
