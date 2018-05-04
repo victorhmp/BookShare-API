@@ -1,5 +1,5 @@
 class WishlistsController < ApiController
-  before_action :require_login, except: [:index, :show, :show_by_user]
+  before_action :require_login, except: [:index, :show]
 
   def index
     wishlists = Wishlist.all
@@ -9,7 +9,7 @@ class WishlistsController < ApiController
   def show
     wishlist = Wishlist.find(params[:id])
     wishlist_user = wishlist.user
-    render json: { wishlist: wishlist, username: wishlist_user.username }
+    render json: { wishlist: wishlist, username: monster_user.username }
   end
 
   # GET /wishlists/user/1
@@ -19,11 +19,10 @@ class WishlistsController < ApiController
     render json: @wishlists
   end
 
-  def create
+  def create  
     wishlist = Wishlist.new(wishlist_params)
-    wishlist_user = current_user
-
-    if wishlist.save!
+    wishlist.user = current_user    
+    if wishlist.save
       render json: {
         message: 'ok',
         wishlist: wishlist
@@ -31,6 +30,22 @@ class WishlistsController < ApiController
     else
       render json: {message: 'Could not create wishlist'}
     end
+  end
+
+  def update
+    wishlist = Wishlist.find(params[:id])
+    wishlist.user = current_user
+    if wishlist.update(wishlist_params)
+      #redirect_to wishlist
+      render json: {message: 'ok', wishlist: wishlist}
+    else
+      render json: {message: 'Could not update wishlist'}
+    end
+  end
+
+  def destroy
+    wishlist = Wishlist.find(params[:id])
+    wishlist.destroy
   end
 
   private
