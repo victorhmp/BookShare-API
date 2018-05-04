@@ -1,5 +1,5 @@
 class WishlistsController < ApiController
-  before_action :require_login, except: [:index, :show]
+  before_action :require_login, except: [:index, :show, :show_by_user]
   rescue_from ActiveRecord::RecordNotFound, :with => :return_404
 
   def index
@@ -10,7 +10,7 @@ class WishlistsController < ApiController
   def show
     wishlist = Wishlist.find(params[:id])
     wishlist_user = wishlist.user
-    render json: { wishlist: wishlist, username: monster_user.username }
+    render json: { wishlist: wishlist, username: wishlist_user.username }
   end
 
   # GET /wishlists/user/1

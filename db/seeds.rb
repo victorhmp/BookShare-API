@@ -9,8 +9,12 @@
 List.create(title:"West Sweden Road Trip", excerpt:"A cool road trip with stops in harbors of the coast")
 List.create(title:"Must have equipment for the outdoor photographer", excerpt:"My selection of gear for modern outdoor photography")
 
-User.destroy_all
+Trade.destroy_all
+Offer.destroy_all
+Advertisement.destroy_all
+WishlistItem.destroy_all
 Wishlist.destroy_all
+User.destroy_all
 
 victor = User.create!(username: 'victor', email: 'victor@gmail.com', password: 'test123')
 kojo = User.create!(username: 'kojo', email: 'kojo@gmail.com', password: 'test123')
@@ -43,4 +47,28 @@ Wishlist.create!(user: kaique, name: 'Ruby', description: 'Ruby books I want to 
 Wishlist.create!(user: kaique, name: 'C++', description: 'C++ books I want to read')
 Wishlist.create!(user: kaique, name: 'Python', description: 'Python books I want to read')
 
-Advertisement.create!(user: kaique, book_title:'Eu', book_author: 'Voce', book_publication: 'Dois filhos', comment: 'E um cachorro')
+wishlist_victor = Wishlist.find(2)
+wishlist_kojo = Wishlist.find(6)
+wishlist_yurick = Wishlist.find(10)
+wishlist_kaique = Wishlist.find(14)
+WishlistItem.create!(book_title: 'Apostila Ruby', book_author: 'Gubi', book_publication: 'TecProg II - 2018', wishlist: wishlist_victor)
+WishlistItem.create!(book_title: 'Apostila Ruby', book_author: 'Gubi', book_publication: 'TecProg II - 2018', wishlist: wishlist_kaique)
+WishlistItem.create!(book_title: 'Apostila Ruby', book_author: 'Gubi', book_publication: 'TecProg II - 2018', wishlist: wishlist_yurick)
+WishlistItem.create!(book_title: 'Apostila Ruby', book_author: 'Gubi', book_publication: 'TecProg II - 2018', wishlist: wishlist_kojo)
+
+Advertisement.create!(user: kaique, book_title:'Um Curso de Cálculo - Volume 3', book_author: 'Hamilton Luiz Guidorizzi', book_publication: 'LTC; Edição: 1ª (9 de março de 2001)', comment: 'Cansei de cálculo, me ajuda ai', status: 0)
+Advertisement.create!(user: victor, book_title:'Exemplo', book_author: 'Walt Disney', book_publication: 'Top Man Editora', comment: 'Livro topíssimo', status: 1)
+
+Offer.create(advertisement_id: 1, user: kojo, book_title:'Harry Potter', book_author: 'J.K.Rolando', book_publication: 'Seila', comment: 'Me ajuda, dp ta chegando', status: 2)
+Offer.create(advertisement_id: 1, user: victor, book_title:'Game of Thrones', book_author: 'George R.R. Martin', book_publication: 'Leya ou algo assim', comment: 'Não nem pq to ofertando', status: 0)
+Offer.create(advertisement_id: 1, user: yurick, book_title:'Bolus', book_author: 'Bolus', book_publication: 'Bolus', comment: 'Só pra deixar na coleção dos Guidorizzi', status: 2)
+Offer.create(advertisement_id: 2, user: kojo, book_title:'Exemplo Edição de Luxo', book_author: 'Walter Dis Ney', book_publication: 'Top Man Editora', comment: 'Recomendo, também é muito bom', status: 1)
+
+Trade.create(status:0, advertisement_id:2, offer_id:4)
+
+advertisement = Advertisement.find(2)
+advertisement.update!(trade_id: 1)
+advertisement.save!
+offer = Offer.find(4)
+offer.update!(trade_id: 1)
+offer.save!

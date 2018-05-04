@@ -1,5 +1,5 @@
 class OffersController < ApiController
-  before_action :require_login, except: [:index, :show]
+  before_action :require_login, except: [:index, :show, :show_by_advertisement, :show_by_user]
   rescue_from ActiveRecord::RecordNotFound, :with => :return_404
 
   # GET /offers
@@ -13,7 +13,7 @@ class OffersController < ApiController
     offer = Offer.find(params[:id])
     offer_user = offer.user
     render json: {offer: offer, 
-                  username: monster_user.username,
+                  username: offer_user.username,
                  }
   end
 

@@ -1,5 +1,5 @@
 class AdvertisementsController < ApiController
-  before_action :require_login, except: [:index, :show]
+  before_action :require_login, except: [:index, :show, :show_by_user]
   rescue_from ActiveRecord::RecordNotFound, :with => :return_404
 
   def index
@@ -11,7 +11,7 @@ class AdvertisementsController < ApiController
     advertisement = Advertisement.find(params[:id])
     advertisement_user = advertisement.user
     render json: {advertisement: advertisement, 
-                  username: monster_user.username,
+                  username: advertisement_user.username,
                  }
   end
 

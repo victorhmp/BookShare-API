@@ -1,6 +1,7 @@
 class TradesController < ApplicationController
   before_action :set_trade, only: [:show, :update, :destroy]
-  rescue_from ActiveRecord::RecordNotFound, :with => :return_404
+  before_action :require_login, except: [:index, :show, :show_by_advertisement, :show_by_offer]
+  # rescue_from ActiveRecord::RecordNotFound, :with => :return_404
 
   # GET /trades
   def index
@@ -50,9 +51,9 @@ class TradesController < ApplicationController
   #   @trade.destroy
   # end
 
-  def return_404
-    render :json => {:error => "not-found"}.to_json, :status => 404
-  end
+  # def return_404
+  #   render :json => {:error => "not-found"}.to_json, :status => 404
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
