@@ -30,5 +30,11 @@ Rails.application.routes.draw do
       get '/advertisement/:id', to: 'offers#show_by_advertisement'
     end
   end
+  resources :trades do
+    collection do
+      get '/advertisement/:id', to: 'trades#show_by_advertisement'
+      get '/offer/:id', to: 'trades#show_by_offer'
+    end
+  end
   # devise_for :users, defaults: { format: :json }
 end

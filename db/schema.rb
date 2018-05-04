@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_04_034347) do
+ActiveRecord::Schema.define(version: 2018_05_04_040902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2018_05_04_034347) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status"
+    t.bigint "trade_id"
+    t.index ["trade_id"], name: "index_advertisements_on_trade_id"
     t.index ["user_id"], name: "index_advertisements_on_user_id"
   end
 
@@ -76,8 +78,20 @@ ActiveRecord::Schema.define(version: 2018_05_04_034347) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "trade_id"
     t.index ["advertisement_id"], name: "index_offers_on_advertisement_id"
+    t.index ["trade_id"], name: "index_offers_on_trade_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
+  end
+
+  create_table "trades", force: :cascade do |t|
+    t.integer "status"
+    t.bigint "advertisement_id"
+    t.bigint "offer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["advertisement_id"], name: "index_trades_on_advertisement_id"
+    t.index ["offer_id"], name: "index_trades_on_offer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -109,10 +123,14 @@ ActiveRecord::Schema.define(version: 2018_05_04_034347) do
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
+  add_foreign_key "advertisements", "trades"
   add_foreign_key "advertisements", "users"
   add_foreign_key "list_items", "items"
   add_foreign_key "list_items", "lists"
   add_foreign_key "offers", "advertisements"
+  add_foreign_key "offers", "trades"
   add_foreign_key "offers", "users"
+  add_foreign_key "trades", "advertisements"
+  add_foreign_key "trades", "offers"
   add_foreign_key "wishlist_items", "wishlists"
 end
