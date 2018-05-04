@@ -17,10 +17,16 @@ class OffersController < ApiController
                  }
   end
 
-  # GET /advertisements/user/1
+  # GET /offers/user/1
   def show_by_user
-    @advertisements = Advertisement.where("user_id = ?", params[:id])
-    render json: @advertisements
+    @offers = Offer.where("user_id = ?", params[:id])
+    render json: @offers
+  end
+
+  # GET /offers/advertisement/1
+  def show_by_advertisement
+    @offers = Offer.where("advertisement_id = ?", params[:id])
+    render json: @offers
   end
 
   # POST /offers

@@ -26,8 +26,8 @@ Rails.application.routes.draw do
   end
   resources :offers do
     collection do
-      get '/user/:id', to: 'offer#show_by_user'
-      get '/advertisement/:id', to: 'offer#show_by_advertisement'
+      get '/user/:id', to: 'offers#show_by_user'
+      get '/advertisement/:id', to: 'offers#show_by_advertisement'
     end
   end
   # devise_for :users, defaults: { format: :json }
