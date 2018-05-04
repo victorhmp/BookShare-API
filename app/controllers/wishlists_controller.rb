@@ -1,5 +1,6 @@
 class WishlistsController < ApiController
   before_action :require_login, except: [:index, :show]
+  rescue_from ActiveRecord::RecordNotFound, :with => :return_404
 
   def index
     wishlists = Wishlist.all
@@ -46,6 +47,10 @@ class WishlistsController < ApiController
   def destroy
     wishlist = Wishlist.find(params[:id])
     wishlist.destroy
+  end
+
+  def return_404
+    render :json => {:error => "not-found"}.to_json, :status => 404
   end
 
   private

@@ -1,5 +1,7 @@
-class WishlistItemsController < ApplicationController
+class WishlistItemsController < ApiController
   before_action :set_wishlist_item, only: [:show, :update, :destroy]
+  before_action :require_login, except: [:index, :show, :show_by_wishlist]
+  rescue_from ActiveRecord::RecordNotFound, :with => :return_404
 
   # GET /wishlist_items
   def index
@@ -43,6 +45,10 @@ class WishlistItemsController < ApplicationController
   # DELETE /wishlist_items/1
   def destroy
     @wishlist_item.destroy
+  end
+
+  def return_404
+    render :json => {:error => "not-found"}.to_json, :status => 404
   end
 
   private
