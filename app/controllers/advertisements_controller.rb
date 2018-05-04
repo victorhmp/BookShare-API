@@ -1,5 +1,6 @@
 class AdvertisementsController < ApiController
   before_action :require_login, except: [:index, :show]
+  rescue_from ActiveRecord::RecordNotFound, :with => :return_404
 
   def index
     advertisement = Advertisement.all    
@@ -12,6 +13,12 @@ class AdvertisementsController < ApiController
     render json: {advertisement: advertisement, 
                   username: monster_user.username,
                  }
+  end
+
+  # GET /advertisements/user/1
+  def show_by_user
+    @advertisements = Advertisement.where("user_id = ?", params[:id])
+    render json: @advertisements
   end
 
   # POST /advertisements
@@ -41,13 +48,17 @@ class AdvertisementsController < ApiController
   end
 
   # DELETE /advertisements/1
-  def destroy
-    advertisement = Advertisement.find(params[:id])
-    advertisement.destroy
+  # def destroy
+  #   advertisement = Advertisement.find(params[:id])
+  #   advertisement.destroy
+  # end
+
+  def return_404
+    render :json => {:error => "not-found"}.to_json, :status => 404
   end
 
   private
     def advertisement_params
-      params.require(:advertisement).permit(:book_title, :book_author, :book_publication, :comment)
+      params.require(:advertisement).permit(:book_title, :book_author, :book_publication, :comment, :status)
     end
 end

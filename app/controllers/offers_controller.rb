@@ -1,5 +1,6 @@
 class OffersController < ApiController
   before_action :require_login, except: [:index, :show]
+  rescue_from ActiveRecord::RecordNotFound, :with => :return_404
 
   # GET /offers
   def index
@@ -14,6 +15,12 @@ class OffersController < ApiController
     render json: {offer: offer, 
                   username: monster_user.username,
                  }
+  end
+
+  # GET /advertisements/user/1
+  def show_by_user
+    @advertisements = Advertisement.where("user_id = ?", params[:id])
+    render json: @advertisements
   end
 
   # POST /offers
@@ -42,9 +49,13 @@ class OffersController < ApiController
   end
 
   # DELETE /offers/1
-  def destroy
-    offer = Offer.find(params[:id])
-    offer.destroy
+  # def destroy
+  #   offer = Offer.find(params[:id])
+  #   offer.destroy
+  # end
+
+  def return_404
+    render :json => {:error => "not-found"}.to_json, :status => 404
   end
 
   private
