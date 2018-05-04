@@ -42,3 +42,5 @@ Wishlist.create!(user: kaique, name: 'JavaScript', description: 'JavaScript book
 Wishlist.create!(user: kaique, name: 'Ruby', description: 'Ruby books I want to read')
 Wishlist.create!(user: kaique, name: 'C++', description: 'C++ books I want to read')
 Wishlist.create!(user: kaique, name: 'Python', description: 'Python books I want to read')
+
+Advertisement.create!(user: kaique, book_title:'Eu', book_author: 'Voce', book_publication: 'Dois filhos', comment: 'E um cachorro')
