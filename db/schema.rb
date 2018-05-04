@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_04_020958) do
+ActiveRecord::Schema.define(version: 2018_05_04_025437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,20 @@ ActiveRecord::Schema.define(version: 2018_05_04_020958) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "offers", force: :cascade do |t|
+    t.string "book_title"
+    t.string "book_author"
+    t.string "book_publication"
+    t.text "comment"
+    t.bigint "user_id"
+    t.bigint "advertisement_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["advertisement_id"], name: "index_offers_on_advertisement_id"
+    t.index ["user_id"], name: "index_offers_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -97,5 +111,7 @@ ActiveRecord::Schema.define(version: 2018_05_04_020958) do
   add_foreign_key "advertisements", "users"
   add_foreign_key "list_items", "items"
   add_foreign_key "list_items", "lists"
+  add_foreign_key "offers", "advertisements"
+  add_foreign_key "offers", "users"
   add_foreign_key "wishlist_items", "wishlists"
 end

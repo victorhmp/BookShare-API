@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :offers
   resources :advertisements
   namespace :api do
     namespace :v1 do

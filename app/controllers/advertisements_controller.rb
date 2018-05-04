@@ -16,7 +16,7 @@ class AdvertisementsController < ApiController
 
   # POST /advertisements
   def create
-
+    
     advertisement = Advertisement.new(advertisement_params)
     advertisement.user = current_user
     if advertisement.save
