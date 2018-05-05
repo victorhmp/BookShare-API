@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post '/login' => "sessions#create"
   delete '/logout' => "sessions#destroy"
   resources :users
-  get 'profile' => "users#profile"
+  get '/profile' => "users#profile"
   resources :wishlists do
     collection do
       get '/user/:id', to: 'wishlists#show_by_user'
