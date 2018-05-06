@@ -1,24 +1,17 @@
-# README
+# BookShare
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+BookShare is a collaborative platform for sharing books though trading.
+We aim to make it easy for people to read more and more books, sharing those books you already read to other readers and receiving new books from them.
 
-Things you may want to cover:
+## API
 
-* Ruby version
+This repository is for the service's API, built with Ruby on Rails.
 
-* System dependencies
+## Contributors
 
-* Configuration
+This project was created as part of the discipline MAC0218 and is made by:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Victor Hugo M. Pinto (victorhmp)
+- Ricardo Hideki Kojo (ricardokojo)
+- Yurick Honda (yurickyh)
+- Kaique Komata (kaiquekk)
