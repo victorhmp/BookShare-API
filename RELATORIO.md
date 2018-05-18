@@ -1,5 +1,12 @@
 # RELATÓRIO
 
+# INTEGRANTES
+
+Nomes:  Kaique Komata           NUSP: 
+        Ricardo Hideki Kojo     NUSP:
+        Victor Hugo M. Pinto    NUSP: 
+        Yurick Yussuke Honda    NUSP: 10258984
+
 ## PRIMEIRA FASE
 
 ### IDEIA
