@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
   resources :advertisements do
     collection do
+      get '/feed', to: 'advertisements#feed'
       get '/user/:id', to: 'advertisements#show_by_user'
     end
   end

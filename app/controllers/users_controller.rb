@@ -1,4 +1,4 @@
-class UsersController < ApiController
+  class UsersController < ApiController
   before_action :require_login, except: [:create]
 
   def create

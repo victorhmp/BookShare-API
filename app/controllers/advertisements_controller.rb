@@ -2,6 +2,15 @@ class AdvertisementsController < ApiController
   before_action :require_login, except: [:index, :show, :show_by_user]
   rescue_from ActiveRecord::RecordNotFound, :with => :return_404
 
+  # POST /advertisements/feed
+  def feed
+    user_feed = Advertisement.where.not(user: current_user)
+    render json: { 
+      user: { username: current_user.username, email: current_user.email, name: current_user.name }, feed: user_feed },
+      :include => {:user => { :only => [:id,:username, :name, :email] }},
+      :except => :user_id
+  end
+
   def index
     advertisement = Advertisement.all    
     render json: {advertisement: advertisement}
