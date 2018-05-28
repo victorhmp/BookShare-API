@@ -2,9 +2,9 @@
 
 # INTEGRANTES
 
-Nomes:  Kaique Komata           NUSP: 
-        Ricardo Hideki Kojo     NUSP:
-        Victor Hugo M. Pinto    NUSP: 
+Nomes:  Kaique Komata           NUSP: 10297741
+        Ricardo Hideki Kojo     NUSP: 10295429
+        Victor Hugo M. Pinto    NUSP: 10297720
         Yurick Yussuke Honda    NUSP: 10258984
 
 ## PRIMEIRA FASE
@@ -21,6 +21,25 @@ Na segunda reunião o foco foi as tecnologias que utilizaríamos para o desenvol
 Na terceira reunião se fez a preparação para o início do desenvolvimento, realizando uma ordenação nas funcionalidades que seriam implementadas e a discussão sobre os modelos do banco de dados e os relacionamentos entre as tabelas. Tudo isso foi feito por meio de .
 
 ### DOCKER
+
+Foi feito o setup do Docker e Compose para unificar o ambiente de desenvolvimento e evitar problemas de incompatibilidade. 
+
+Em cada repositório (API e Client), foram criados seus respectivos Dockerfile, docker-compose.yml e .dockerignore. Inclusive, a API e o Client foram criados dentro de containers com seus respectivos comandos de geração do template inicial.
+
+Como descrito no `CONTRIBUTING.md`, para rodar localmente a API, basta fazer: 
+
+```bash
+$ docker-compose build
+$ docker-comppose run --rm api rails db:setup
+$ docker-compose up
+```
+
+E para o cliente:
+
+```bash
+$ docker-compose build
+$ docker-compose up
+```
 
 ### MODELOS E CONTROLADORES
 
