@@ -67,4 +67,4 @@ Para a terceira fase, foi desenvolvido grande parte do cliente, mais especificam
 
 ### O QUE FALTA
 
-Reservamos para a terceira fase o término da implementação do processo de troca e ofertas, além da realização de testes, pois foram feitos testes básicos de funcionalidade, mas no há testes unitários. Inicialmente, o esperado era reservar a terceira fase para a criação do design, porém achamos que o design está bem satisfatório, já que estamos o fazendo em paralelo à implementação.
+Reservamos para a terceira fase o término da implementação do processo de troca e ofertas, além da realização de testes, pois foram feitos testes básicos de funcionalidade, mas não há testes unitários. Inicialmente, o esperado era reservar a terceira fase para a criação do design, porém achamos que o design está bem satisfatório, já que estamos o fazendo em paralelo à implementação.
