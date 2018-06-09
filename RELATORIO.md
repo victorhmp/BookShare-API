@@ -54,3 +54,17 @@ As tabelas criadas foram:
 ### CLIENTE
 
 Sabendo da dificuldade do processo de programação/desenvolvimento do Cliente, foi criada uma página inicial e um logo para a plataforma, com redirecionamento para páginas básicas de registro e login, porém sem integração com o CRUD dos controladores da API.
+
+## SEGUNDA FASE
+
+### REUNIÃO
+
+Não foram feitas tantas reuniões quanto na primeira fase. Todas as reuniões feitas foram online e visando decisões mais imediatas, dado que cada integrante se responsabilizou por determinada parte do projeto, todos sabem o que cada integrante deve implementar. Assim, as reuniões tinham um formato decisivo em questão de implementação.
+
+### CLIENTE
+
+Para a terceira fase, foi desenvolvido grande parte do cliente, mais especificamente o feed, lista de desejos, login e registro de usuário. O grupo optou por utilizar React, então o processo torna-se um pouco mais lento pois estamos em processo de aprendizado da ferramenta em paralelo à implementação do projeto.
+
+### O QUE FALTA
+
+Reservamos para a terceira fase o término da implementação do processo de troca e ofertas, além da realização de testes, pois foram feitos testes básicos de funcionalidade, mas no há testes unitários. Inicialmente, o esperado era reservar a terceira fase para a criação do design, porém achamos que o design está bem satisfatório, já que estamos o fazendo em paralelo à implementação.
