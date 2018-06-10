@@ -2,10 +2,10 @@
 
 # INTEGRANTES
 
-Nomes:  Kaique Komata           NUSP: 10297741
-        Ricardo Hideki Kojo     NUSP: 10295429
-        Victor Hugo M. Pinto    NUSP: 10297720
-        Yurick Yussuke Honda    NUSP: 10258984
+Nomes:  Kaique Komata           NUSP: 10297741</br>
+        Ricardo Hideki Kojo     NUSP: 10295429</br>
+        Victor Hugo M. Pinto    NUSP: 10297720</br>
+        Yurick Yussuke Honda    NUSP: 10258984</br>
 
 ## PRIMEIRA FASE
 
@@ -57,14 +57,18 @@ Sabendo da dificuldade do processo de programação/desenvolvimento do Cliente, 
 
 ## SEGUNDA FASE
 
+### EXECUÇÃO
+
+Para teste da plataforma, basta executar a API e o Cliente juntamente como descrito nos repositórios. Alguns dos principais serviços de SwaB já estão disponíveis, tornando relativamente fácil seu uso, já nesta fase. Porém, ainda faltam diversas funcionalidades que tornam a plataforma realmente utilizável.
+
 ### REUNIÃO
 
-Não foram feitas tantas reuniões quanto na primeira fase. Todas as reuniões feitas foram online e visando decisões mais imediatas, dado que cada integrante se responsabilizou por determinada parte do projeto, todos sabem o que cada integrante deve implementar. Assim, as reuniões tinham um formato decisivo em questão de implementação.
+Não foram feitas tantas reuniões quanto na primeira fase. Todas as reuniões feitas foram online e visando decisões mais imediatas, dado que cada integrante se responsabilizou por determinada parte do projeto, todos sabem o que cada integrante deve implementar. Assim, as reuniões tinham um formato decisivo em questão de implementação. Porém, para a terceira fase, planejamos reuniões semanais, pois como a terceira fase é conclusiva, é preciso maior comunicação entre os membros da equipe para um maior desempenho nessa reta final.
 
 ### CLIENTE
 
-Para a terceira fase, foi desenvolvido grande parte do cliente, mais especificamente o feed, lista de desejos, login e registro de usuário. O grupo optou por utilizar React, então o processo torna-se um pouco mais lento pois estamos em processo de aprendizado da ferramenta em paralelo à implementação do projeto.
+Para a terceira fase, foi desenvolvido grande parte do cliente, mais especificamente o feed, lista de desejos, login e registro de usuário. O grupo optou por utilizar React, então o processo torna-se um pouco mais lento pois estamos em processo de aprendizado da ferramenta em paralelo à implementação do projeto. É importante ressaltar que há um membro responsável pelo design do projeto, assim as páginas e componentes visuais se fazem juntos das funcionalidades.
 
 ### O QUE FALTA
 
-Reservamos para a terceira fase o término da implementação do processo de troca e ofertas, além da realização de testes, pois foram feitos testes básicos de funcionalidade, mas não há testes unitários. Inicialmente, o esperado era reservar a terceira fase para a criação do design, porém achamos que o design está bem satisfatório, já que estamos o fazendo em paralelo à implementação.
+Reservamos para a terceira fase o término da implementação do processo de trocas e ofertas, além da realização de testes, pois foram feitos testes básicos de funcionalidade, mas não há testes unitários. Inicialmente, o esperado era reservar a terceira fase para a criação do design, porém achamos que o design está bem satisfatório, já que estamos o fazendo em paralelo à implementação, como dito.
