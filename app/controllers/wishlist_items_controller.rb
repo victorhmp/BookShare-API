@@ -12,7 +12,7 @@ class WishlistItemsController < ApiController
 
   # GET /wishlist_items/1
   def show
-    render json: @wishlist_item
+    render json: @wishlist_items
   end
 
   # GET /wishlist_items/wishlist/1
@@ -24,27 +24,27 @@ class WishlistItemsController < ApiController
 
   # POST /wishlist_items
   def create
-    @wishlist_item = WishlistItem.new(wishlist_item_params)
-
-    if @wishlist_item.save
-      render json: @wishlist_item, status: :created, location: @wishlist_item
+    @wishlist_items = WishlistItem.new(wishlist_item_params)
+    @wishlist_items_user = current_user
+    if @wishlist_items.save
+      render json: @wishlist_items, status: :created, location: @wishlist_item
     else
-      render json: @wishlist_item.errors, status: :unprocessable_entity
+      render json: @wishlist_items.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /wishlist_items/1
   def update
-    if @wishlist_item.update(wishlist_item_params)
-      render json: @wishlist_item
+    if @wishlist_items.update(wishlist_item_params)
+      render json: @wishlist_items
     else
-      render json: @wishlist_item.errors, status: :unprocessable_entity
+      render json: @wishlist_items.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /wishlist_items/1
   def destroy
-    @wishlist_item.destroy
+    @wishlist_items.destroy
   end
 
   def return_404
@@ -54,7 +54,7 @@ class WishlistItemsController < ApiController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wishlist_item
-      @wishlist_item = WishlistItem.find(params[:id])
+      @wishlist_items = WishlistItem.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
