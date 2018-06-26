@@ -22,11 +22,13 @@ Rails.application.routes.draw do
   resources :advertisements do
     collection do
       get '/feed', to: 'advertisements#feed'
+      get '/user/my', to: 'advertisements#show_mine'
       get '/user/:id', to: 'advertisements#show_by_user'
     end
   end
   resources :offers do
     collection do
+      get '/user/my', to: 'offers#show_mine'
       get '/user/:id', to: 'offers#show_by_user'
       get '/advertisement/:id', to: 'offers#show_by_advertisement'
     end

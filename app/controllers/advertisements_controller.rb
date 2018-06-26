@@ -11,6 +11,15 @@ class AdvertisementsController < ApiController
       :except => :user_id
   end
 
+  # /advertisements/user/my
+  def show_mine
+    advertisement = Advertisement.where(user: current_user)
+    render json: {
+      advertisement: advertisement,
+      user: current_user
+    }
+  end
+
   def index
     advertisement = Advertisement.all    
     render json: {advertisement: advertisement}

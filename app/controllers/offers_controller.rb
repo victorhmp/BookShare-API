@@ -17,6 +17,15 @@ class OffersController < ApiController
                  }
   end
 
+  # /offers/user/my
+  def show_mine
+    offer = Offer.where(user: current_user)
+    render json: {
+      offer: offer,
+      user: current_user
+    }
+  end
+
   # GET /offers/user/1
   def show_by_user
     @offers = Offer.where("user_id = ?", params[:id])
