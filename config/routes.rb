@@ -24,6 +24,8 @@ Rails.application.routes.draw do
       get '/feed', to: 'advertisements#feed'
       get '/user/my', to: 'advertisements#show_mine'
       get '/user/:id', to: 'advertisements#show_by_user'
+
+      post '/close', to: 'advertisements#close'
     end
   end
   resources :offers do
