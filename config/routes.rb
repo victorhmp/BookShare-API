@@ -33,6 +33,8 @@ Rails.application.routes.draw do
       get '/user/my', to: 'offers#show_mine'
       get '/user/:id', to: 'offers#show_by_user'
       get '/advertisement/:id', to: 'offers#show_by_advertisement'
+
+      post '/cancel', to: 'offers#cancel'
     end
   end
   resources :trades do

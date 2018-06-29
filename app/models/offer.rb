@@ -3,5 +3,5 @@ class Offer < ApplicationRecord
   belongs_to :advertisement
   has_one :trade
 
-  enum status: [:pending, :accepted, :declined]
+  enum status: [:pending, :accepted, :declined, :cancelled]
 end

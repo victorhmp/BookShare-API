@@ -38,6 +38,30 @@ class OffersController < ApiController
     render json: @offers
   end
 
+  # POST /offers/cancel
+  def cancel
+    offer = Offer.find(params[:id])
+    if current_user == offer.user
+      if offer.cancelled!
+        render json: {
+          message: 'Cancelled succesfully',
+          offer: offer
+        }, status => 200
+      else
+        render json: {
+          message: 'Could not save to database',
+          offer: offer
+        }, status => 500
+      end
+
+    else
+      render json: {
+          message: 'Unauthorized',
+          offer: offer
+        }, status => 401
+    end
+  end
+
   # POST /offers
   def create
     offer = Offer.new(offer_params)
