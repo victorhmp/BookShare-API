@@ -23,10 +23,17 @@ class AdvertisementsController < ApiController
   # /advertisements/user/my
   def show_mine
     advertisement = Advertisement.where(user: current_user)
-    render json: {
-      advertisement: advertisement,
-      user: current_user
-    }
+    render json: advertisement.as_json(
+      include: {
+        offer: {
+          include: { 
+            user: {
+              only: :username
+            }
+          }
+        }
+      }
+    )
   end
 
   # POST /advertisements/close

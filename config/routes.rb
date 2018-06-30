@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       get '/advertisement/:id', to: 'offers#show_by_advertisement'
 
       post '/cancel', to: 'offers#cancel'
+      post '/decline', to: 'offers#decline'
     end
   end
   resources :trades do

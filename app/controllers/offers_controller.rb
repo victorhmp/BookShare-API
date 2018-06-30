@@ -71,6 +71,31 @@ class OffersController < ApiController
     end
   end
 
+  # POST /offers/decline
+  def decline
+    offer = Offer.find(params[:id])
+    # only the advertisement owner can decline the offer
+    if current_user == offer.advertisement.user
+      if offer.declined!
+        render json: {
+          message: 'Declined succesfully',
+          offer: offer
+        }, status => 200
+      else
+        render json: {
+          message: 'Could not save to database',
+          offer: offer
+        }, status => 500
+      end
+
+    else
+      render json: {
+          message: 'Unauthorized',
+          offer: offer
+        }, status => 401
+    end
+  end
+
   # POST /offers
   def create
     offer = Offer.new(offer_params)
