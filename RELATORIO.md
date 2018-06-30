@@ -106,6 +106,17 @@ Além disso, é contundente citar que as criações, atualizações e remoções
 
 Ainda não se conhecem muitos bugs do sistema, porém um fácilmente notável ocorre quando se cria uma lista de desejos ou um item da lista de desejos e, após ser redirecionado à pagina que os mostra, eles não se encontram lá. Percebeu-se também, que tal bug aparenta acontecer apenas no primeiro item de lista de desejos ou na primeira lista de desejos criada, portando das próximas vezes, isso não passa a ser um problema. Uma dedução é o problema no <i>"Redirect"</i> do <i>React</i>, mas não é uma certeza, já que o grupo não conseguiu resolver tal anomalia.
 
+### SEEDS DATA
+
+Para demonstrar o funcionamento da plataforma, populamos o arquivo `seeds.rb` com alguns usuários:
+
+- VictorHugo
+- RicardoKojo
+- YurickHonda
+- KaiqueKomata
+
+A senha de todos eles é "test123". Tudo o que foi colocado no `seeds.rb` populado o bando de dados quando rodamos o comando `docker-compose run --rm api rails db:setup`.
+
 ### CONCLUSÃO
 
 A equipe como um todo conclui que o desempenho dos integrantes foi bem satisfatório e o aprendizado enriquecedor, permitindo a entrada dos alunos no universo de desenvolvimento <i>web</i>. O conhecimento teórico de métodos ágeis aplicado ao sistema, aproximou os alunos da fronteira teoria/prática. Além disso, a experiência bônus, como opção da equipe, da utilização do <i>Docker</i> e <i>React</i> enriqueceu o conhecimento dessas ferramentas e expandiu a possibilidade de utilização delas.
