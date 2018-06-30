@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
       post '/cancel', to: 'offers#cancel'
       post '/decline', to: 'offers#decline'
+      post '/accept', to: 'offers#accept'
     end
   end
   resources :trades do

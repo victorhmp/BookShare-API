@@ -96,6 +96,39 @@ class OffersController < ApiController
     end
   end
 
+  # POST /offers/accept
+  def accept
+    offer = Offer.includes(:advertisement).find(params[:id])
+    # only the advertisement owner can accept the offer
+    if current_user == offer.advertisement.user
+      if offer.accepted!
+        # decline other offers
+        offer.advertisement.offer.each do |o|
+          if o.id != offer.id
+            o.declined!
+          end
+        end
+
+        # close advertisement
+        offer.advertisement.closed!
+
+        # create trade
+        trade = Trade.new
+        trade.status = 0
+        trade.offer = offer
+        trade.advertisement = offer.advertisement
+        trade.save!
+
+        render json: offer.as_json(include:{advertisement:{include:{user:{only: :username}}}}), status => 200
+      else
+        render json: offer.as_json(include:{advertisement:{include:{user:{only: :username}}}}), status => 500
+      end
+
+    else
+      render json: offer.as_json(include:{advertisement:{include:{user:{only: :username}}}}), status => 401
+    end
+  end
+
   # POST /offers
   def create
     offer = Offer.new(offer_params)
