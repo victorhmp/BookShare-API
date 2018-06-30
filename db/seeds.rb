@@ -53,13 +53,31 @@ WishlistItem.create!(book_title: 'Apostila Ruby', book_author: 'Gubi', book_publ
 WishlistItem.create!(book_title: 'Apostila Ruby', book_author: 'Gubi', book_publication: 'TecProg II - 2018', wishlist: wishlist_yurick)
 WishlistItem.create!(book_title: 'Apostila Ruby', book_author: 'Gubi', book_publication: 'TecProg II - 2018', wishlist: wishlist_kojo)
 
-Advertisement.create!(user: kaique, book_title:'Um Curso de Cálculo - Volume 3', book_author: 'Hamilton Luiz Guidorizzi', book_publication: 'LTC; Edição: 1ª (9 de março de 2001)', comment: 'Cansei de cálculo, me ajuda ai', status: 0)
-Advertisement.create!(user: victor, book_title:'Exemplo', book_author: 'Walt Disney', book_publication: 'Top Man Editora', comment: 'Livro topíssimo', status: 1)
+WishlistItem.create!(book_title: 'Intro to Probability Models', book_author: 'Sheldon Ross', book_publication: '2012', wishlist: wishlist_victor)
+WishlistItem.create!(book_title: 'Intro to Probability Models', book_author: 'Sheldon Ross', book_publication: '2012', wishlist: wishlist_kaique)
+WishlistItem.create!(book_title: 'Intro to Probability Models', book_author: 'Sheldon Ross', book_publication: '2012', wishlist: wishlist_yurick)
+WishlistItem.create!(book_title: 'Intro to Probability Models', book_author: 'Sheldon Ross', book_publication: '2012', wishlist: wishlist_kojo)
 
-Offer.create(advertisement_id: 1, user: kojo, book_title:'Harry Potter', book_author: 'J.K.Rolando', book_publication: 'Seila', comment: 'Me ajuda, dp ta chegando', status: 2)
+WishlistItem.create!(book_title: 'One to Zero', book_author: 'Peter Thiel', book_publication: '2014', wishlist: wishlist_kojo)
+WishlistItem.create!(book_title: 'One to Zero', book_author: 'Peter Thiel', book_publication: '2014', wishlist: wishlist_kaique)
+WishlistItem.create!(book_title: 'One to Zero', book_author: 'Peter Thiel', book_publication: '2014', wishlist: wishlist_yurick)
+WishlistItem.create!(book_title: 'One to Zero', book_author: 'Peter Thiel', book_publication: '2014', wishlist: wishlist_victor)
+
+WishlistItem.create!(book_title: 'The Last Lecture', book_author: 'Randy Pausch', book_publication: '2008', wishlist: wishlist_kojo)
+WishlistItem.create!(book_title: 'The Last Lecture', book_author: 'Randy Pausch', book_publication: '2008', wishlist: wishlist_kaique)
+WishlistItem.create!(book_title: 'The Last Lecture', book_author: 'Randy Pausch', book_publication: '2008', wishlist: wishlist_victor)
+WishlistItem.create!(book_title: 'The Last Lecture', book_author: 'Randy Pausch', book_publication: '2008', wishlist: wishlist_yurick)
+
+
+Advertisement.create!(user: kaique, book_title:'Um Curso de Cálculo - Volume 3', book_author: 'Hamilton Luiz Guidorizzi', book_publication: '2001', comment: 'Cansei de cálculo, me ajuda ai', status: 0)
+Advertisement.create!(user: victor, book_title:'The Last Lecture', book_author: 'Randy Pausch', book_publication: '2008', comment: 'Livro topíssimo', status: 0)
+Advertisement.create!(user: kojo, book_title:'Gene', book_author: 'Siddhartha Mukherjee', book_publication: '2016', comment: 'Amazing book!', status: 0)
+Advertisement.create!(user: yurick, book_title:'Exemplo', book_author: 'Walt Disney', book_publication: 'Top Man Editora', comment: 'Livro topíssimo', status: 1)
+
+Offer.create(advertisement_id: 1, user: kojo, book_title:'Harry Potter', book_author: 'J.K.Rowling', book_publication: 'Seila', comment: 'Me ajuda, dp ta chegando', status: 2)
 Offer.create(advertisement_id: 1, user: victor, book_title:'Game of Thrones', book_author: 'George R.R. Martin', book_publication: 'Leya ou algo assim', comment: 'Não nem pq to ofertando', status: 0)
 Offer.create(advertisement_id: 1, user: yurick, book_title:'Bolus', book_author: 'Bolus', book_publication: 'Bolus', comment: 'Só pra deixar na coleção dos Guidorizzi', status: 2)
-Offer.create(advertisement_id: 2, user: kojo, book_title:'Exemplo Edição de Luxo', book_author: 'Walter Dis Ney', book_publication: 'Top Man Editora', comment: 'Recomendo, também é muito bom', status: 1)
+Offer.create(advertisement_id: 2, user: kojo, book_title:'Exemplo Edição de Luxo', book_author: 'Walt Disney', book_publication: 'Top Man Editora', comment: 'Recomendo, também é muito bom', status: 1)
 
 Trade.create(status:0, advertisement_id:2, offer_id:4)
 
