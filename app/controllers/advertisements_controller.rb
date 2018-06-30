@@ -38,25 +38,20 @@ class AdvertisementsController < ApiController
 
   # POST /advertisements/close
   def close
-    advertisement = Advertisement.find(params[:id])
+    advertisement = Advertisement.includes(:offer).find(params[:id])
     if current_user == advertisement.user
       if advertisement.closed!
-        render json: {
-          message: 'Closed succesfully',
-          advertisement: advertisement
-        }, status => 200
+        advertisement.offer.each do |o|
+          if (!o.declined!)
+            render json: advertisement.as_json(include:{offer:{include:{user:{only: :username}}}}), status => 500
+          end
+        end
+        render json: advertisement.as_json(include:{offer:{include:{user:{only: :username}}}}), status => 200
       else
-        render json: {
-          message: 'Could not save to database',
-          advertisement: advertisement
-        }, status => 500
+        render json: advertisement.as_json(include:{offer:{include:{user:{only: :username}}}}), status => 500
       end
-
     else
-      render json: {
-          message: 'Unauthorized',
-          advertisement: advertisement
-        }, status => 401
+      render json: advertisement.as_json(include:{offer:{include:{user:{only: :username}}}}), status => 401
     end
   end
 
