@@ -19,11 +19,20 @@ class OffersController < ApiController
 
   # /offers/user/my
   def show_mine
-    offer = Offer.where(user: current_user)
-    render json: {
-      offer: offer,
-      user: current_user
-    }
+    offer = Offer.includes(:advertisement).where(user: current_user).order(:status)
+
+    # render json: offer.to_json(:include => :advertisement
+    render json: offer.as_json(
+        include: {
+          advertisement: {
+            include: { 
+              user: {
+                only: :username
+              }
+            }
+          }
+        }
+    )
   end
 
   # GET /offers/user/1
