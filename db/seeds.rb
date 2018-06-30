@@ -14,7 +14,7 @@ Wishlist.destroy_all
 User.destroy_all
 
 victor = User.create!(username: 'VictorHugo', email: 'victor2142@gmail.com', password: 'test123')
-kojo = User.create!(username: 'RicardoKojo', email: 'kojo@gmail.com', password: 'test123')
+kojo = User.create!(username: 'RicardoKojo', email: 'ricardokojo7@gmail.com', password: 'test123')
 yurick = User.create!(username: 'YurickHonda', email: 'yurickoficial@gmail.com', password: 'test123')
 kaique = User.create!(username: 'KaiqueKomata', email: 'kaique.komata@gmail.com', password: 'test123')
 
