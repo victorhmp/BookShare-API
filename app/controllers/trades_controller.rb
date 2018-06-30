@@ -1,5 +1,5 @@
-class TradesController < ApplicationController
-  before_action :set_trade, only: [:show, :update, :destroy]
+class TradesController < ApiController
+  before_action :set_trade, only: [:show, :update]
   before_action :require_login, except: [:index, :show, :show_by_advertisement, :show_by_offer]
   # rescue_from ActiveRecord::RecordNotFound, :with => :return_404
 
@@ -24,6 +24,17 @@ class TradesController < ApplicationController
   def show_by_offer
     @trades = Trade.where("offer_id = ?", params[:id])
     render json: @trades
+  end
+
+  # /advertisements/user/my
+  def show_mine
+    tradeOff = Trade.joins(:offer).where('user_id = ?', current_user.id)
+    tradeAdv = Trade.joins(:advertisement).where('user_id = ?', current_user.id)
+    render json: {
+      tradeOffer: tradeOff,
+      tradeAdvertisement: tradeAdv,
+      user: current_user
+    }
   end
 
   # POST /trades

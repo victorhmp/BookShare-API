@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     collection do
       get '/advertisement/:id', to: 'trades#show_by_advertisement'
       get '/offer/:id', to: 'trades#show_by_offer'
+      get '/user/my', to: 'trades#show_mine'
     end
   end
   # devise_for :users, defaults: { format: :json }
