@@ -93,8 +93,9 @@ Ao final do desenvolvimento, o sistema pode: <br>
 * Mostrar os anúncios de livros disponíveis;
 * Criar anúncio sobre um certo livro;
 * Ofertar um certo livro a partir de um anúncio de um outro usuário;
-* Criar, deletar e atualizar lista de desejos e
-* Criar, deletar e atualizar itens na lista de desejos.
+* Criar, deletar e atualizar lista de desejos;
+* Criar, deletar e atualizar itens na lista de desejos e
+* Visualizar seu perfil, na aba "Meu Usuário".
 
 ### O QUE FALTOU
 
