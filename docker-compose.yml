@@ -9,13 +9,22 @@ services:
     volumes:
       - 'db:/var/lib/postgresql/data'
 
+  cache:
+    image: 'redis:4.0-alpine'
+    command: 'redis-server --requirepass yourpassword'
+    volumes:
+      - 'cache:/var/lib/redis/data'
+
   api:
     image: '${API_IMAGE}'
+    command: cat Gemfile.lock
+    command: rails s
     build:
       context: .
       target: '${API_BUILD_TARGET}'
     depends_on:
       - 'db'
+      - 'cache'
     ports:
       - "3000:3000"
     volumes:
@@ -26,3 +35,5 @@ services:
 
 volumes:
   db:
+  cache:
+  dependencies:
